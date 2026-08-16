@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Allow: /login
+Allow: /register
+
+# Everything past this point needs a login and shows nothing useful to a
+# crawler anyway (or is the separate admin panel) — keep it out of the
+# index instead of wasting crawl budget on pages Google can't actually see.
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /section/
+Disallow: /result
+Disallow: /notices
+Disallow: /bookmarks
+Disallow: /help
+Disallow: /admin
+
+Sitemap: https://hubstudy.online/sitemap.xml
