@@ -333,17 +333,17 @@
     <!-- Header Navigation -->
     <header>
         <div class="header-container">
-            <a href="https://hubstudy.online" class="logo">
+            <a href="/" class="logo">
                 HUB<span class="text-gradient">STUDY</span>
             </a>
 
-            <div class="nav-actions">
-                <a href="/downloadapp.html" class="nav-btn active">Download App</a>
-                <a href="/documents.html" class="nav-btn">Documents</a>
-                <a href="/teams.html" class="nav-btn">Team</a>
-                <a href="https://hubstudy.online/login" class="nav-btn">Log in</a>
-                <a href="https://hubstudy.online/register" class="btn-signup">Sign up</a>
-            </div>
+            <nav class="nav-actions">
+                <a href="/documents" class="nav-btn">Documents</a>
+                <a href="/team" class="nav-btn">Team</a>
+                <a href="/downloadapp" class="nav-btn active">Download App</a>
+                <a href="/login" class="nav-btn">Log in</a>
+                <a href="/register" class="btn-signup">Sign up</a>
+            </nav>
         </div>
     </header>
 
@@ -357,7 +357,7 @@
             <p>Access all notes, resources, and your study portal on mobile with a fast and lightweight experience.</p>
 
             <div class="btn-container">
-                <!-- Direct GitHub Raw Download URL -->
+                <!-- Direct APK Download Link -->
                 <a href="https://raw.githubusercontent.com/ujjwalwebsite9693/downloadapp/a10086c42188060ec3d31bb35a7582c229354b49/app-debug.apk" class="btn-download" download="HubStudy.apk">
                     <i class="fa-brands fa-android" style="font-size: 1.4rem;"></i> Download Android App
                 </a>
@@ -409,25 +409,21 @@
 
         // 2. Block Key Combinations (F12, Inspect, Save, View Source)
         document.addEventListener('keydown', function (e) {
-            // F12 Key
             if (e.key === "F12" || e.keyCode === 123) {
                 e.preventDefault();
                 return false;
             }
 
-            // Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C (DevTools Shortcuts)
             if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
                 e.preventDefault();
                 return false;
             }
 
-            // Ctrl+U (View Source)
             if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
                 e.preventDefault();
                 return false;
             }
 
-            // Ctrl+S (Save Page) & Ctrl+P (Print Page)
             if (e.ctrlKey && (e.key === 'S' || e.key === 's' || e.key === 'P' || e.key === 'p')) {
                 e.preventDefault();
                 return false;
