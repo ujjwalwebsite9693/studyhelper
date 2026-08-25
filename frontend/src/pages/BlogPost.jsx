@@ -61,17 +61,23 @@ const BlogPost = () => {
                             {post.author || 'Admin'}
                         </span>
                         <span>•</span>
-                        <span>{new Date(post.date).toLocaleDateString()}</span>
+                        <span>
+                            {new Date(post.createdAt || post.date || Date.now()).toLocaleDateString('en-US', {
+                                year: 'numeric',
+                                month: 'short',
+                                day: 'numeric'
+                            })}
+                        </span>
                         <span>•</span>
-                        <span>{post.readTime || '5 min read'}</span>
+                        <span>{post.readTimeMinutes ? `${post.readTimeMinutes} min read` : (post.readTime || '5 min read')}</span>
                         <span>•</span>
                         <span>👁️ {post.views || 0} views</span>
                     </div>
                 </header>
 
-                {post.coverImage && (
+                {(post.coverImageUrl || post.coverImage) && (
                     <div className="mb-12 rounded-2xl overflow-hidden glass border-none">
-                        <img src={post.coverImage} alt={post.title} className="w-full h-auto object-cover max-h-[500px]" />
+                        <img src={post.coverImageUrl || post.coverImage} alt={post.title} className="w-full h-auto object-cover max-h-[500px]" />
                     </div>
                 )}
 
