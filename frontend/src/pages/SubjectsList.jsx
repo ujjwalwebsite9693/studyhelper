@@ -41,13 +41,9 @@ const SubjectsList = () => {
                 });
                 const response = await api.get(`/subjects/public?${params.toString()}`);
                 
-                if (response.data && response.data.subjects) {
-                    setSubjects(response.data.subjects);
-                    setTotalPages(response.data.totalPages || 1);
-                } else {
-                    setSubjects(response.data || []);
-                    setTotalPages(1);
-                }
+                const list = response.data?.guides || response.data?.subjects || (Array.isArray(response.data) ? response.data : []);
+                setSubjects(list);
+                setTotalPages(response.data?.totalPages || 1);
                 setLoading(false);
             } catch (err) {
                 setError(err.message || 'Failed to fetch subjects');
