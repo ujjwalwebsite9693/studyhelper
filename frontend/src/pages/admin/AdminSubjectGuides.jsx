@@ -49,7 +49,16 @@ export default function AdminSubjectGuides() {
 
   function load() {
     setLoading(true);
-    adminApi.get('/subjects/admin/all').then((res) => setGuides(res.data)).finally(() => setLoading(false));
+    adminApi.get('/subjects/admin/all')
+      .then((res) => {
+        const list = Array.isArray(res.data) ? res.data : (res.data?.guides || res.data?.subjects || []);
+        setGuides(list);
+      })
+      .catch((err) => {
+        console.error('Failed to load guides:', err);
+        setGuides([]);
+      })
+      .finally(() => setLoading(false));
   }
   useEffect(load, []);
 
@@ -69,15 +78,15 @@ export default function AdminSubjectGuides() {
     setSemester(g.semester || 1);
     setMetaDescription(g.metaDescription || '');
     setIntroduction(g.introduction || '');
-    setKeyConcepts(g.keyConcepts || []);
+    setKeyConcepts(g.concepts || g.keyConcepts || []);
     setChapters(g.chapters || []);
     setImportantQuestions(g.importantQuestions || []);
     setMcqs(g.mcqs || []);
     
-    setPreviousYearContext(g.examInfo?.previousYearContext || '');
-    setExamTips(g.examInfo?.examTips || []);
-    setSyllabusRelevance(g.examInfo?.syllabusRelevance || '');
-    setPdfContents(g.examInfo?.pdfContents || '');
+    setPreviousYearContext(g.previousYearContext || g.examInfo?.previousYearContext || '');
+    setExamTips(g.examTips || g.examInfo?.examTips || []);
+    setSyllabusRelevance(g.syllabusRelevance || g.examInfo?.syllabusRelevance || '');
+    setPdfContents(g.pdfContents || g.examInfo?.pdfContents || '');
     
     setFaqs(g.faqs || []);
     setRelatedTopics(g.relatedTopics || []);
@@ -94,17 +103,29 @@ export default function AdminSubjectGuides() {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    if (!title.trim()) {
+      return toast.error('Please enter a title');
+    }
     setSubmitting(true);
     try {
       const payload = {
-        title, slug, branch, semester: Number(semester), metaDescription, introduction,
-        keyConcepts, chapters, importantQuestions, mcqs, faqs, relatedTopics, examples,
-        examInfo: {
-          previousYearContext,
-          examTips,
-          syllabusRelevance,
-          pdfContents
-        }
+        title,
+        slug: slug || title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, ''),
+        branch,
+        semester: Number(semester),
+        metaDescription,
+        introduction,
+        concepts: keyConcepts,
+        chapters,
+        importantQuestions,
+        mcqs,
+        previousYearContext,
+        examTips,
+        syllabusRelevance,
+        pdfContents,
+        faqs,
+        relatedTopics,
+        examples
       };
 
       if (editingId) {
