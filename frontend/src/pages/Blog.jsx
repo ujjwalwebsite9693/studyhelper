@@ -122,8 +122,8 @@ const Blog = () => {
                             {posts.map(post => (
                                 <div key={post._id} className="glass rounded-2xl overflow-hidden flex flex-col hover:-translate-y-1 transition-transform duration-300">
                                     <div className="h-48 bg-ink-800 relative">
-                                        {post.coverImage ? (
-                                            <img src={post.coverImage} alt={post.title} className="w-full h-full object-cover" />
+                                        {(post.coverImageUrl || post.coverImage) ? (
+                                            <img src={post.coverImageUrl || post.coverImage} alt={post.title} className="w-full h-full object-cover" />
                                         ) : (
                                             <div className="w-full h-full bg-gradient-to-br from-brand-900/50 to-accent-900/50 flex items-center justify-center">
                                                 <span className="text-4xl opacity-50">✍️</span>
@@ -135,8 +135,14 @@ const Blog = () => {
                                     </div>
                                     <div className="p-6 flex flex-col flex-1">
                                         <div className="flex justify-between text-xs text-gray-500 mb-3">
-                                            <span>{new Date(post.date || Date.now()).toLocaleDateString()}</span>
-                                            <span>{post.readTime || '5 min'} read</span>
+                                            <span>
+                                                {new Date(post.createdAt || post.date || Date.now()).toLocaleDateString('en-US', {
+                                                    year: 'numeric',
+                                                    month: 'short',
+                                                    day: 'numeric'
+                                                })}
+                                            </span>
+                                            <span>{post.readTimeMinutes ? `${post.readTimeMinutes} min` : (post.readTime || '5 min')} read</span>
                                         </div>
                                         <h2 className="text-xl font-bold font-sora mb-3 hover:text-brand-400 transition-colors">
                                             <Link to={`/blog/${post.slug || post._id}`}>{post.title}</Link>
