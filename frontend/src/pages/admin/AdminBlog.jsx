@@ -23,7 +23,16 @@ export default function AdminBlog() {
 
   function load() {
     setLoading(true);
-    adminApi.get('/blog/admin/all').then((res) => setPosts(res.data)).finally(() => setLoading(false));
+    adminApi.get('/blog/admin/all')
+      .then((res) => {
+        const list = res.data?.posts || (Array.isArray(res.data) ? res.data : []);
+        setPosts(list);
+      })
+      .catch((err) => {
+        console.error('Failed to load posts:', err);
+        setPosts([]);
+      })
+      .finally(() => setLoading(false));
   }
   useEffect(load, []);
 
@@ -179,10 +188,10 @@ export default function AdminBlog() {
         </div>
       </form>
 
-      <h2 className="font-semibold mt-8 mb-3">All Posts ({posts.length})</h2>
+      <h2 className="font-semibold mt-8 mb-3">All Posts ({Array.isArray(posts) ? posts.length : 0})</h2>
       {loading ? <Loader /> : (
         <div className="space-y-2">
-          {posts.map((p) => (
+          {Array.isArray(posts) && posts.map((p) => (
             <div key={p._id} className="glass rounded-lg p-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div className="min-w-0">
                 <div className="flex items-center gap-2 mb-1">
@@ -201,7 +210,7 @@ export default function AdminBlog() {
               </div>
             </div>
           ))}
-          {posts.length === 0 && <p className="text-white/40 text-sm">No blog posts yet.</p>}
+          {(!Array.isArray(posts) || posts.length === 0) && <p className="text-white/40 text-sm">No blog posts yet.</p>}
         </div>
       )}
     </div>
