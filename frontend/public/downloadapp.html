@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hub Study - Download Mobile App</title>
+    
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #060913;
+            --card-bg: rgba(15, 23, 42, 0.6);
+            --card-hover: rgba(30, 41, 59, 0.75);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --accent-blue: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.25);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --btn-border: rgba(255, 255, 255, 0.12);
+            --success-color: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Ambient Glow Effect */
+        .ambient-glow {
+            position: absolute;
+            top: -120px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 750px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.15) 0%, rgba(99, 102, 241, 0.1) 40%, rgba(0,0,0,0) 70%);
+            z-index: 0;
+            pointer-events: none;
+            filter: blur(50px);
+        }
+
+        /* Header Navbar */
+        header {
+            position: relative;
+            z-index: 20;
+            width: 100%;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(16px);
+            background: rgba(6, 9, 19, 0.8);
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            height: 68px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        /* Logo HUBSTUDY */
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo .text-gradient {
+            background: linear-gradient(135deg, #38bdf8, #60a5fa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Navigation Buttons */
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-btn {
+            font-size: 0.875rem;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            border: 1px solid var(--btn-border);
+            color: #f1f5f9;
+            text-decoration: none;
+            font-weight: 500;
+            background: transparent;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .nav-btn.active {
+            background: rgba(56, 189, 248, 0.1);
+            border-color: rgba(56, 189, 248, 0.4);
+            color: #38bdf8;
+        }
+
+        .btn-signup {
+            font-size: 0.875rem;
+            padding: 0.5rem 1.15rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: #ffffff;
+            text-decoration: none;
+            background: linear-gradient(135deg, #6366f1, #38bdf8);
+            box-shadow: 0 4px 14px rgba(99, 102, 241, 0.35);
+            border: none;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .btn-signup:hover {
+            opacity: 0.92;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(99, 102, 241, 0.45);
+        }
+
+        /* Main Section Layout */
+        main {
+            position: relative;
+            z-index: 10;
+            max-width: 1100px;
+            margin: 3.5rem auto;
+            padding: 0 1.5rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-content p {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--success-color);
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Download Button */
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-width: 360px;
+        }
+
+        .btn-download {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #2563eb, #1d4ed8);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 8px 24px var(--accent-glow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(56, 189, 248, 0.4);
+        }
+
+        .app-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .meta-item .label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .meta-item .value {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 2px;
+        }
+
+        /* Preview Card */
+        .preview-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(16px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+
+        .app-icon-large {
+            width: 90px;
+            height: 90px;
+            background: linear-gradient(135deg, #38bdf8, #2563eb);
+            border-radius: 22px;
+            margin: 0 auto 1.5rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: white;
+            box-shadow: 0 10px 30px var(--accent-glow);
+        }
+
+        .feature-list {
+            list-style: none;
+            text-align: left;
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .feature-list li {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feature-list li i {
+            color: var(--accent-blue);
+        }
+
+        /* Footer */
+        footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem 1rem;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 868px) {
+            .header-container {
+                height: auto;
+                padding: 1rem;
+                flex-direction: column;
+                gap: 12px;
+            }
+            .nav-actions {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            main {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+                margin: 2rem auto;
+            }
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;" ondragstart="return false;" onselectstart="return false;">
+
+    <div class="ambient-glow"></div>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="header-container">
+            <a href="/" class="logo">
+                HUB<span class="text-gradient">STUDY</span>
+            </a>
+
+            <nav class="nav-actions">
+                <a href="/documents" class="nav-btn">Documents</a>
+                <a href="/team" class="nav-btn">Team</a>
+                <a href="/downloadapp" class="nav-btn active">Download App</a>
+                <a href="/login" class="nav-btn">Log in</a>
+                <a href="/register" class="btn-signup">Sign up</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="hero-content">
+            <div class="badge">
+                <i class="fa-solid fa-circle-check"></i> Latest Version Release
+            </div>
+            <h1>Download Hub Study Official Android App</h1>
+            <p>Access all notes, resources, and your study portal on mobile with a fast and lightweight experience.</p>
+
+            <div class="btn-container">
+                <!-- Direct APK Download Link -->
+                <a href="https://raw.githubusercontent.com/ujjwalwebsite9693/downloadapp/a10086c42188060ec3d31bb35a7582c229354b49/app-debug.apk" class="btn-download" download="HubStudy.apk">
+                    <i class="fa-brands fa-android" style="font-size: 1.4rem;"></i> Download Android App
+                </a>
+            </div>
+
+            <div class="app-meta">
+                <div class="meta-item">
+                    <span class="label">Version</span>
+                    <span class="value">v1.0 (Latest)</span>
+                </div>
+                <div class="meta-item">
+                    <span class="label">OS Support</span>
+                    <span class="value">Android 6.0+</span>
+                </div>
+                <div class="meta-item">
+                    <span class="label">Format</span>
+                    <span class="value">APK</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- App Information Card -->
+        <div class="preview-card">
+            <div class="app-icon-large">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </div>
+            <h3>Hub Study Companion</h3>
+            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 4px;">Official Mobile Version</p>
+
+            <ul class="feature-list">
+                <li><i class="fa-solid fa-shield-halved"></i> Direct App Download</li>
+                <li><i class="fa-solid fa-bolt"></i> Fast & Optimized Interface</li>
+                <li><i class="fa-solid fa-mobile-screen"></i> Native Mobile Experience</li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Hub Study. All rights reserved.</p>
+    </footer>
+
+    <!-- Security & DevTools Protection Script -->
+    <script>
+        // 1. Block Right Click
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        // 2. Block Key Combinations (F12, Inspect, Save, View Source)
+        document.addEventListener('keydown', function (e) {
+            if (e.key === "F12" || e.keyCode === 123) {
+                e.preventDefault();
+                return false;
+            }
+
+            if (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) {
+                e.preventDefault();
+                return false;
+            }
+
+            if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+                e.preventDefault();
+                return false;
+            }
+
+            if (e.ctrlKey && (e.key === 'S' || e.key === 's' || e.key === 'P' || e.key === 'p')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+
+        // 3. Clear Console Output continuously
+        setInterval(function() {
+            console.clear();
+        }, 1000);
+    </script>
+
+</body>
+</html>

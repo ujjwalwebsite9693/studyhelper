@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://hubstudy.online/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://hubstudy.online/subjects</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://hubstudy.online/blog</loc><changefreq>daily</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hubstudy.online/documents</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hubstudy.online/team</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hubstudy.online/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hubstudy.online/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://hubstudy.online/privacy-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://hubstudy.online/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://hubstudy.online/login</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hubstudy.online/register</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://hubstudy.online/subjects/c-programming</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hubstudy.online/subjects/data-structures</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hubstudy.online/subjects/dbms</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hubstudy.online/subjects/computer-networks</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hubstudy.online/subjects/operating-systems</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hubstudy.online/subjects/web-technology</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hubstudy.online/subjects/oop-java</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hubstudy.online/subjects/software-engineering</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hubstudy.online/subjects/digital-electronics</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://hubstudy.online/subjects/engineering-mathematics</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+</urlset>

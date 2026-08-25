@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+Allow: /subjects
+Allow: /subjects/
+Allow: /blog
+Allow: /blog/
+Allow: /documents
+Allow: /team
+Allow: /about
+Allow: /contact
+Allow: /privacy-policy
+Allow: /terms
+Allow: /login
+Allow: /register
+
+Disallow: /dashboard
+Disallow: /profile
+Disallow: /section/
+Disallow: /result
+Disallow: /notices
+Disallow: /bookmarks
+Disallow: /help
+Disallow: /admin
+
+Sitemap: https://hubstudy.online/sitemap.xml
