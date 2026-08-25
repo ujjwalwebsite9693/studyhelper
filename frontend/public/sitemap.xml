@@ -6,6 +6,7 @@
   <url><loc>https://hubstudy.online/documents</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://hubstudy.online/team</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://hubstudy.online/about</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://hubstudy.online/developer</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://hubstudy.online/contact</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://hubstudy.online/privacy-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://hubstudy.online/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
