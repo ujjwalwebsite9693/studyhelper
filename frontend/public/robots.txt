@@ -7,6 +7,7 @@ Allow: /blog/
 Allow: /documents
 Allow: /team
 Allow: /about
+Allow: /developer
 Allow: /contact
 Allow: /privacy-policy
 Allow: /terms
