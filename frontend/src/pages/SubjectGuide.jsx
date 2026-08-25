@@ -154,18 +154,20 @@ const SubjectGuide = () => {
                                         <div className="space-y-3">
                                             {mcq.options.map((opt, oIdx) => {
                                                 const isSelected = selectedAnswers[mIdx] === oIdx;
-                                                const isCorrect = oIdx === mcq.correctOptionIndex;
+                                                const rawCorrect = mcq.correctIndex !== undefined ? mcq.correctIndex : (mcq.correctOptionIndex !== undefined ? mcq.correctOptionIndex : 0);
+                                                const correctIdx = Number(rawCorrect);
+                                                const isCorrect = oIdx === correctIdx;
                                                 const showResult = selectedAnswers[mIdx] !== undefined;
                                                 
-                                                let btnClass = "w-full text-left p-4 rounded-lg border transition-all duration-200 ";
+                                                let btnClass = "w-full text-left p-4 rounded-lg border transition-all duration-200 flex items-center justify-between ";
                                                 if (!showResult) {
-                                                    btnClass += "border-white/10 hover:border-brand-500 bg-ink-900";
+                                                    btnClass += "border-white/10 hover:border-brand-500 bg-ink-900 text-gray-200";
                                                 } else if (isCorrect) {
-                                                    btnClass += "border-green-500 bg-green-500/10 text-green-400";
+                                                    btnClass += "border-emerald-500 bg-emerald-500/20 text-emerald-300 font-medium shadow-sm shadow-emerald-500/20";
                                                 } else if (isSelected && !isCorrect) {
-                                                    btnClass += "border-red-500 bg-red-500/10 text-red-400";
+                                                    btnClass += "border-rose-500 bg-rose-500/20 text-rose-300 shadow-sm shadow-rose-500/20";
                                                 } else {
-                                                    btnClass += "border-white/5 bg-ink-900/50 opacity-50";
+                                                    btnClass += "border-white/5 bg-ink-900/40 text-gray-500 opacity-60";
                                                 }
 
                                                 return (
@@ -175,7 +177,9 @@ const SubjectGuide = () => {
                                                         disabled={showResult}
                                                         className={btnClass}
                                                     >
-                                                        {opt}
+                                                        <span>{opt}</span>
+                                                        {showResult && isCorrect && <span className="text-emerald-400 font-bold text-lg">✓ Correct</span>}
+                                                        {showResult && isSelected && !isCorrect && <span className="text-rose-400 font-bold text-lg">✗ Incorrect</span>}
                                                     </button>
                                                 );
                                             })}
