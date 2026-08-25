@@ -45,6 +45,7 @@ import About from './pages/About';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import ContactUs from './pages/ContactUs';
+import Developer from './pages/Developer';
 
 // Chatbot floats on every page except the admin panel, where it would
 // just be clutter for someone managing content.
@@ -73,6 +74,7 @@ export default function App() {
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
                 <Route path="/about" element={<About />} />
+                <Route path="/developer" element={<Developer />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/terms" element={<TermsOfService />} />
                 <Route path="/contact" element={<ContactUs />} />
