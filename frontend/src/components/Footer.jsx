@@ -40,18 +40,18 @@ export default function Footer() {
             <h3 className="font-semibold text-white/90 mb-4">Connect</h3>
             <ul className="space-y-2 text-sm text-white/50">
               <li>
-                <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-brand-300 transition flex items-center gap-2">
-                  📸 Instagram
-                </a>
+                <Link to="/developer" className="hover:text-brand-300 transition flex items-center gap-2 text-accent-400 font-medium">
+                  👨‍💻 About Developer
+                </Link>
               </li>
               <li>
                 <a href={CONTACT.whatsappUrl} target="_blank" rel="noopener noreferrer" className="hover:text-brand-300 transition flex items-center gap-2">
-                  💬 WhatsApp
+                  💬 WhatsApp ({CONTACT.whatsappDisplay})
                 </a>
               </li>
               <li>
-                <a href={CONTACT.websiteUrl} target="_blank" rel="noopener noreferrer" className="hover:text-brand-300 transition flex items-center gap-2">
-                  🌐 Developer Website
+                <a href={CONTACT.instagramUrl} target="_blank" rel="noopener noreferrer" className="hover:text-brand-300 transition flex items-center gap-2">
+                  📸 Instagram (@{CONTACT.instagramHandle})
                 </a>
               </li>
             </ul>
@@ -59,7 +59,7 @@ export default function Footer() {
         </div>
         
         <div className="pt-6 border-t border-white/5 text-center text-xs text-white/40">
-          <p>Copyright © {new Date().getFullYear()} HUB STUDY. Developed by <span className="text-white/60">{CONTACT.developer}</span>.</p>
+          <p>Copyright © {new Date().getFullYear()} HUB STUDY. Developed by <Link to="/developer" className="text-accent-400 hover:underline font-medium">{CONTACT.developer}</Link>.</p>
         </div>
       </div>
     </footer>
